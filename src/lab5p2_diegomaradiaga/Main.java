@@ -3,11 +3,13 @@ package lab5p2_diegomaradiaga;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
 public class Main extends javax.swing.JFrame {
-
+    ArrayList <Object> character = new ArrayList();
     /**
      * Creates new form Main
      */
@@ -52,11 +54,13 @@ public class Main extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         btm_menu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        popup1 = new javax.swing.JPopupMenu();
         PanelPrin = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         Btn_Simular = new javax.swing.JButton();
         Btn_Agregar = new javax.swing.JButton();
         Btn_Listar = new javax.swing.JButton();
+        Btn_Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jD_agregar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -184,7 +188,20 @@ public class Main extends javax.swing.JFrame {
         jTree.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jTree.setForeground(new java.awt.Color(0, 0, 0));
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Personajes");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("DC");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Marvel");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("CapCom");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("MortalKombat");
+        treeNode1.add(treeNode2);
         jTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jTree.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTreeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTree);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 310, 500));
@@ -253,7 +270,7 @@ public class Main extends javax.swing.JFrame {
                 Btn_SimularActionPerformed(evt);
             }
         });
-        PanelPrin.add(Btn_Simular, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 190, 70));
+        PanelPrin.add(Btn_Simular, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, 190, 70));
 
         Btn_Agregar.setBackground(new java.awt.Color(18, 40, 61));
         Btn_Agregar.setFont(new java.awt.Font("THE AMAZING SPIDER-MAN", 1, 36)); // NOI18N
@@ -275,7 +292,23 @@ public class Main extends javax.swing.JFrame {
                 Btn_ListarMouseClicked(evt);
             }
         });
-        PanelPrin.add(Btn_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 190, 70));
+        PanelPrin.add(Btn_Listar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 190, 70));
+
+        Btn_Salir.setBackground(new java.awt.Color(18, 40, 61));
+        Btn_Salir.setFont(new java.awt.Font("THE AMAZING SPIDER-MAN", 1, 36)); // NOI18N
+        Btn_Salir.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_Salir.setText("Salir");
+        Btn_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Btn_SalirMouseClicked(evt);
+            }
+        });
+        Btn_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_SalirActionPerformed(evt);
+            }
+        });
+        PanelPrin.add(Btn_Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, 190, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Fondito1.jpg"))); // NOI18N
         PanelPrin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 730));
@@ -291,7 +324,6 @@ public class Main extends javax.swing.JFrame {
 
     private void Btn_AgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_AgregarMouseClicked
         abrirAgregar();
-        
     }//GEN-LAST:event_Btn_AgregarMouseClicked
 
     private void Btn_ListarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_ListarMouseClicked
@@ -321,12 +353,20 @@ public class Main extends javax.swing.JFrame {
         Personaje p = new Personaje(name, debilidad, poder, poder, agilidadF, fuerza, agilidadM, hp);
         character.add(p);
         
-        DefaultTreeModel m = (DefaultTreeModel) jTree.getModel();
-        DefaultMutableTreeNode raiz
-                = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode raiz  = (DefaultMutableTreeNode) jTree.getModel().getRoot();
+        DefaultMutableTreeNode nodonuevo  = new DefaultMutableTreeNode (character.get(character.size()-1));
         
+        if(((Personaje)character.get(character.size()-1)).Universo.equals("DC")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
+        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("Marvel")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
+        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("CapCom")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
+        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("MortalKombat")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
+        }
         
-        
+        JOptionPane.showMessageDialog(jD_agregar, "Personaje agregado exitosamente");
         jTFnombre.setText("");
         jTFpoder.setText("");
         jTFdebilidad.setText("");
@@ -344,9 +384,34 @@ public class Main extends javax.swing.JFrame {
         Regresar();
     }//GEN-LAST:event_btm_menuMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void Btn_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_SalirMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_Btn_SalirMouseClicked
+
+    private void Btn_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Btn_SalirActionPerformed
+
+    private void jTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTreeMouseClicked
+        if (evt.isMetaDown()) {
+            int row = jTree.getClosestRowForLocation(
+                    evt.getX(), evt.getY());
+            jTree.setSelectionRow(row);
+            Object v1
+                    = jTree.getSelectionPath().
+                    getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+            
+            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
+                personaje_seleccionado
+                        = (Personaje) nodo_seleccionado.
+                        getUserObject();
+                popup1.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jTreeMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -410,6 +475,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Agregar;
     private javax.swing.JButton Btn_Listar;
+    private javax.swing.JButton Btn_Salir;
     private javax.swing.JButton Btn_Simular;
     private javax.swing.JPanel PanelPrin;
     private javax.swing.JLabel Titulo;
@@ -446,6 +512,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree;
     private javax.swing.JPanel panelfondo;
+    private javax.swing.JPopupMenu popup1;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Personaje> character = new ArrayList();
+    
+    
+    DefaultMutableTreeNode nodo_seleccionado;
+    Personaje personaje_seleccionado;
 }
