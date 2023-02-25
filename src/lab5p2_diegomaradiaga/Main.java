@@ -57,6 +57,22 @@ public class Main extends javax.swing.JFrame {
         popup2 = new javax.swing.JPopupMenu();
         jmListar2 = new javax.swing.JMenuItem();
         jmeliminar = new javax.swing.JMenuItem();
+        jD_simular = new javax.swing.JDialog();
+        btm_regresar = new javax.swing.JButton();
+        jcbpersonaje2 = new javax.swing.JComboBox<>();
+        jcbpersonaje1 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTp1 = new javax.swing.JTextArea();
+        btm_batalla = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jListpersonaje2 = new javax.swing.JList<>();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jListpersonaje1 = new javax.swing.JList<>();
+        btm_listarBttl2 = new javax.swing.JButton();
+        btm_listarBttl1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         PanelPrin = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         Btn_Simular = new javax.swing.JButton();
@@ -262,6 +278,99 @@ public class Main extends javax.swing.JFrame {
         });
         popup2.add(jmeliminar);
 
+        jD_simular.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btm_regresar.setBackground(new java.awt.Color(255, 0, 0));
+        btm_regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/deshacer (2).png"))); // NOI18N
+        btm_regresar.setBorder(null);
+        btm_regresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btm_regresarMouseClicked(evt);
+            }
+        });
+        jD_simular.getContentPane().add(btm_regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jcbpersonaje2.setBackground(new java.awt.Color(255, 255, 255));
+        jcbpersonaje2.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jcbpersonaje2.setForeground(new java.awt.Color(0, 0, 0));
+        jcbpersonaje2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "CapCom", "MortalKombat" }));
+        jD_simular.getContentPane().add(jcbpersonaje2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 170, 30));
+
+        jcbpersonaje1.setBackground(new java.awt.Color(255, 255, 255));
+        jcbpersonaje1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jcbpersonaje1.setForeground(new java.awt.Color(0, 0, 0));
+        jcbpersonaje1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "CapCom", "MortalKombat" }));
+        jD_simular.getContentPane().add(jcbpersonaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 170, 30));
+
+        jLabel5.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Personaje 2");
+        jD_simular.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 90, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Personaje 1");
+        jD_simular.getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        jTp1.setBackground(new java.awt.Color(255, 255, 255));
+        jTp1.setColumns(20);
+        jTp1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jTp1.setForeground(new java.awt.Color(0, 0, 0));
+        jTp1.setRows(5);
+        jScrollPane4.setViewportView(jTp1);
+
+        jD_simular.getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 480, 310));
+
+        btm_batalla.setBackground(new java.awt.Color(0, 0, 0));
+        btm_batalla.setFont(new java.awt.Font("THE AMAZING SPIDER-MAN", 1, 24)); // NOI18N
+        btm_batalla.setForeground(new java.awt.Color(255, 255, 255));
+        btm_batalla.setText("Batalla");
+        btm_batalla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btm_batallaMouseClicked(evt);
+            }
+        });
+        jD_simular.getContentPane().add(btm_batalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, 190, 40));
+
+        jListpersonaje2.setBackground(new java.awt.Color(255, 255, 255));
+        jListpersonaje2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jListpersonaje2.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane5.setViewportView(jListpersonaje2);
+
+        jD_simular.getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 170, 260));
+
+        jListpersonaje1.setBackground(new java.awt.Color(255, 255, 255));
+        jListpersonaje1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jListpersonaje1.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane6.setViewportView(jListpersonaje1);
+
+        jD_simular.getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 170, 260));
+
+        btm_listarBttl2.setBackground(new java.awt.Color(0, 0, 0));
+        btm_listarBttl2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        btm_listarBttl2.setForeground(new java.awt.Color(255, 255, 255));
+        btm_listarBttl2.setText("Listar");
+        btm_listarBttl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btm_listarBttl2MouseClicked(evt);
+            }
+        });
+        jD_simular.getContentPane().add(btm_listarBttl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 170, -1));
+
+        btm_listarBttl1.setBackground(new java.awt.Color(0, 0, 0));
+        btm_listarBttl1.setFont(new java.awt.Font("Poppins", 2, 12)); // NOI18N
+        btm_listarBttl1.setForeground(new java.awt.Color(255, 255, 255));
+        btm_listarBttl1.setText("Listar");
+        btm_listarBttl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btm_listarBttl1MouseClicked(evt);
+            }
+        });
+        jD_simular.getContentPane().add(btm_listarBttl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 170, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/fondobatalla33.jpg"))); // NOI18N
+        jD_simular.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 540));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -348,6 +457,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_ListarMouseClicked
 
     private void Btn_SimularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Btn_SimularMouseClicked
+        if(character.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe de agregar superheroes para la batalla");
+        }else{
+            abrirSimular();
+        }
         
     }//GEN-LAST:event_Btn_SimularMouseClicked
 
@@ -427,6 +541,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jTreeMouseClicked
 
     private void jmListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListarActionPerformed
+        Limpiar();
         DefaultListModel modelo = (DefaultListModel) jList.getModel();
 
         for (int i = 0; i < character.size(); i++) {
@@ -437,6 +552,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jmListarActionPerformed
 
     private void jmListar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListar2ActionPerformed
+        Limpiar();
         jList.setModel(new DefaultListModel ());
         
         Object personaje_seleccionado = jTree.getSelectionPath().getLastPathComponent();
@@ -444,7 +560,7 @@ public class Main extends javax.swing.JFrame {
         
         for (int i = 0; i < character.size(); i++) {
             if (personaje_seleccionado.toString().equals(((Personaje)character.get(i)).getNombre())) {
-                modelo.addElement(((Personaje)character.get(i)).toString());
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
                 jTFnombrep.setText(((Personaje)character.get(i)).toString());
                 break;
             }
@@ -460,9 +576,85 @@ public class Main extends javax.swing.JFrame {
             m.removeNodeFromParent(nodo_seleccionado);
             m.reload();
             jList.setModel(new DefaultListModel());
-            
+            character.remove(nodo_seleccionado);
         }
     }//GEN-LAST:event_jmeliminarActionPerformed
+
+    private void btm_regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btm_regresarMouseClicked
+        Regresara();
+    }//GEN-LAST:event_btm_regresarMouseClicked
+
+    private void btm_listarBttl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btm_listarBttl1MouseClicked
+        jListpersonaje1.setModel(new DefaultListModel ());
+        DefaultListModel modelo = (DefaultListModel) jListpersonaje1.getModel();
+        int index = jcbpersonaje1.getSelectedIndex();
+        
+        if(index == 0){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("DC")) {
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 1){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("Marvel")) {
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 2){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("CapCom")) {
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 3){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("MortalKombat")) {
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btm_listarBttl1MouseClicked
+
+    private void btm_listarBttl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btm_listarBttl2MouseClicked
+        jListpersonaje2.setModel(new DefaultListModel ());
+        DefaultListModel modelo2 = (DefaultListModel) jListpersonaje2.getModel();
+        int index = jcbpersonaje2.getSelectedIndex();
+        
+        if(index == 0){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("DC")) {
+                modelo2.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 1){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("Marvel")) {
+                modelo2.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 2){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("CapCom")) {
+                modelo2.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }else if(index == 3){
+            for (int i = 0; i < character.size(); i++) {
+            if ((((Personaje)character.get(i)).getUniverso()).equals("MortalKombat")) {
+                modelo2.addElement(((Personaje)character.get(i)).toStringN());
+            }
+            }
+        }
+        
+        
+    }//GEN-LAST:event_btm_listarBttl2MouseClicked
+
+    private void btm_batallaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btm_batallaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btm_batallaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -510,6 +702,13 @@ public class Main extends javax.swing.JFrame {
         jD_listar.setVisible(true);
     }
     
+    private void abrirSimular() {
+        this.dispose();
+        jD_simular.pack();
+        jD_simular.setLocationRelativeTo(this);
+        jD_simular.setVisible(true);
+    }
+    
     private void Regrear() {
         jD_agregar.dispose();
         this.pack();
@@ -524,6 +723,17 @@ public class Main extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
+    private void Regresara() {
+        jD_simular.dispose();
+        this.pack();
+        this.setLocationRelativeTo(this);
+        this.setVisible(true);
+    }
+    
+    private void Limpiar() {
+        jTFnombrep.setText("");
+        jList.setModel(new DefaultListModel());
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Agregar;
     private javax.swing.JButton Btn_Listar;
@@ -532,12 +742,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel PanelPrin;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Universo;
+    private javax.swing.JButton btm_batalla;
+    private javax.swing.JButton btm_listarBttl1;
+    private javax.swing.JButton btm_listarBttl2;
     private javax.swing.JButton btm_menu;
+    private javax.swing.JButton btm_regresar;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_menu;
     private javax.swing.JComboBox<String> jComboBoxU;
     private javax.swing.JDialog jD_agregar;
     private javax.swing.JDialog jD_listar;
+    private javax.swing.JDialog jD_simular;
     private javax.swing.JLabel jL_agilidadF;
     private javax.swing.JLabel jL_agilidadM;
     private javax.swing.JLabel jL_debilidad;
@@ -548,10 +763,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JList<String> jList;
+    private javax.swing.JList<String> jListpersonaje1;
+    private javax.swing.JList<String> jListpersonaje2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextField jTFaf;
     private javax.swing.JTextField jTFam;
     private javax.swing.JTextField jTFdebilidad;
@@ -560,7 +783,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField jTFnombre;
     private javax.swing.JTextField jTFnombrep;
     private javax.swing.JTextField jTFpoder;
+    private javax.swing.JTextArea jTp1;
     private javax.swing.JTree jTree;
+    private javax.swing.JComboBox<String> jcbpersonaje1;
+    private javax.swing.JComboBox<String> jcbpersonaje2;
     private javax.swing.JMenuItem jmListar;
     private javax.swing.JMenuItem jmListar2;
     private javax.swing.JMenuItem jmeliminar;
