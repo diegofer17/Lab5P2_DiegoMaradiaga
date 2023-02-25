@@ -49,12 +49,14 @@ public class Main extends javax.swing.JFrame {
         jTree = new javax.swing.JTree();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
+        jTFnombrep = new javax.swing.JTextField();
         btm_menu = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         popup1 = new javax.swing.JPopupMenu();
+        jmListar = new javax.swing.JMenuItem();
+        popup2 = new javax.swing.JPopupMenu();
+        jmListar2 = new javax.swing.JMenuItem();
+        jmeliminar = new javax.swing.JMenuItem();
         PanelPrin = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         Btn_Simular = new javax.swing.JButton();
@@ -212,22 +214,13 @@ public class Main extends javax.swing.JFrame {
         jList.setModel(new DefaultListModel());
         jScrollPane2.setViewportView(jList);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 240, 500));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 240, 440));
 
-        jTextArea.setBackground(new java.awt.Color(255, 255, 255));
-        jTextArea.setColumns(20);
-        jTextArea.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jTextArea.setForeground(new java.awt.Color(0, 0, 0));
-        jTextArea.setRows(5);
-        jScrollPane3.setViewportView(jTextArea);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 120, 240, 400));
-
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 60, 240, 40));
+        jTFnombrep.setEditable(false);
+        jTFnombrep.setBackground(new java.awt.Color(255, 255, 255));
+        jTFnombrep.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jTFnombrep.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jTFnombrep, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, 240, 40));
 
         btm_menu.setBackground(new java.awt.Color(28, 99, 171));
         btm_menu.setFont(new java.awt.Font("Sansburg", 2, 18)); // NOI18N
@@ -238,12 +231,36 @@ public class Main extends javax.swing.JFrame {
                 btm_menuMouseClicked(evt);
             }
         });
-        jPanel1.add(btm_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, 240, -1));
+        jPanel1.add(btm_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 60, 240, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Fon22.jpg"))); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
 
         jD_listar.getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1140, 600));
+
+        jmListar.setText("Listar personajes del universo");
+        jmListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListarActionPerformed(evt);
+            }
+        });
+        popup1.add(jmListar);
+
+        jmListar2.setText("Listar atributos");
+        jmListar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmListar2ActionPerformed(evt);
+            }
+        });
+        popup2.add(jmListar2);
+
+        jmeliminar.setText("Eliminar personaje");
+        jmeliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmeliminarActionPerformed(evt);
+            }
+        });
+        popup2.add(jmeliminar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -344,26 +361,27 @@ public class Main extends javax.swing.JFrame {
         String name = jTFnombre.getText();
         String poder = jTFpoder.getText();
         String debilidad = jTFdebilidad.getText();
-        String u = jComboBoxU.getItemAt(index);
+        String u = jComboBoxU.getItemAt(index).toString();
         int fuerza = Integer.parseInt(jTFfuerza.getText());
         int agilidadF = Integer.parseInt(jTFaf.getText());
         int agilidadM = Integer.parseInt(jTFam.getText());
         int hp = Integer.parseInt(jTFhp.getText());
         
-        Personaje p = new Personaje(name, debilidad, poder, poder, agilidadF, fuerza, agilidadM, hp);
+        Personaje p = new Personaje(name, debilidad, u, poder, agilidadF, fuerza, agilidadM, hp);
         character.add(p);
         
-        DefaultMutableTreeNode raiz  = (DefaultMutableTreeNode) jTree.getModel().getRoot();
-        DefaultMutableTreeNode nodonuevo  = new DefaultMutableTreeNode (character.get(character.size()-1));
+        DefaultTreeModel m = (DefaultTreeModel) jTree.getModel();
+        DefaultMutableTreeNode raiz  = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode nodonuevo  = new DefaultMutableTreeNode (p);
         
-        if(((Personaje)character.get(character.size()-1)).Universo.equals("DC")){
+        if(p.Universo.equals("DC")){
             ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
-        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("Marvel")){
-            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
-        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("CapCom")){
-            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
-        }else if (((Personaje)character.get(character.size()-1)).Universo.equals("MortalKombat")){
-            ((DefaultMutableTreeNode)raiz.getChildAt(0)).add(nodonuevo);
+        }else if (p.Universo.equals("Marvel")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(1)).add(nodonuevo);
+        }else if (p.Universo.equals("CapCom")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(2)).add(nodonuevo);
+        }else if (p.Universo.equals("MortalKombat")){
+            ((DefaultMutableTreeNode)raiz.getChildAt(3)).add(nodonuevo);
         }
         
         JOptionPane.showMessageDialog(jD_agregar, "Personaje agregado exitosamente");
@@ -374,6 +392,7 @@ public class Main extends javax.swing.JFrame {
         jTFaf.setText("");
         jTFam.setText("");
         jTFhp.setText("");
+        m.reload();
     }//GEN-LAST:event_btn_addMouseClicked
 
     private void btn_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_menuMouseClicked
@@ -394,23 +413,56 @@ public class Main extends javax.swing.JFrame {
 
     private void jTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTreeMouseClicked
         if (evt.isMetaDown()) {
-            int row = jTree.getClosestRowForLocation(
-                    evt.getX(), evt.getY());
+            int row = jTree.getClosestRowForLocation(evt.getX(), evt.getY());
             jTree.setSelectionRow(row);
-            Object v1
-                    = jTree.getSelectionPath().
-                    getLastPathComponent();
+            Object v1  = jTree.getSelectionPath().getLastPathComponent();
             nodo_seleccionado = (DefaultMutableTreeNode) v1;
             
-            if (nodo_seleccionado.getUserObject() instanceof Personaje) {
-                personaje_seleccionado
-                        = (Personaje) nodo_seleccionado.
-                        getUserObject();
-                popup1.show(evt.getComponent(),
-                        evt.getX(), evt.getY());
+            if (nodo_seleccionado.getUserObject().equals("DC")||nodo_seleccionado.getUserObject().equals("Marvel")||nodo_seleccionado.getUserObject().equals("CapCom")||nodo_seleccionado.getUserObject().equals("MortalKombat")) {
+                popup1.show(evt.getComponent(),evt.getX(), evt.getY());
+            }else{
+                popup2.show(evt.getComponent(),evt.getX(), evt.getY());
             }
         }
     }//GEN-LAST:event_jTreeMouseClicked
+
+    private void jmListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListarActionPerformed
+        DefaultListModel modelo = (DefaultListModel) jList.getModel();
+
+        for (int i = 0; i < character.size(); i++) {
+            if (nodo_seleccionado.toString().equals(((Personaje)character.get(i)).getUniverso())) {
+                modelo.addElement(((Personaje)character.get(i)).toStringN());
+            }
+        }
+    }//GEN-LAST:event_jmListarActionPerformed
+
+    private void jmListar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmListar2ActionPerformed
+        jList.setModel(new DefaultListModel ());
+        
+        Object personaje_seleccionado = jTree.getSelectionPath().getLastPathComponent();
+        DefaultListModel modelo = (DefaultListModel) jList.getModel();
+        
+        for (int i = 0; i < character.size(); i++) {
+            if (personaje_seleccionado.toString().equals(((Personaje)character.get(i)).getNombre())) {
+                modelo.addElement(((Personaje)character.get(i)).toString());
+                jTFnombrep.setText(((Personaje)character.get(i)).toString());
+                break;
+            }
+        }
+        
+    }//GEN-LAST:event_jmListar2ActionPerformed
+
+    private void jmeliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmeliminarActionPerformed
+        int r = JOptionPane.showConfirmDialog(this,"¿Seguro que lo desea eliminar?","Confirm",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+
+        if (r == JOptionPane.OK_OPTION) {
+            DefaultTreeModel m = (DefaultTreeModel) jTree.getModel();
+            m.removeNodeFromParent(nodo_seleccionado);
+            m.reload();
+            jList.setModel(new DefaultListModel());
+            
+        }
+    }//GEN-LAST:event_jmeliminarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -500,19 +552,21 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTFaf;
     private javax.swing.JTextField jTFam;
     private javax.swing.JTextField jTFdebilidad;
     private javax.swing.JTextField jTFfuerza;
     private javax.swing.JTextField jTFhp;
     private javax.swing.JTextField jTFnombre;
+    private javax.swing.JTextField jTFnombrep;
     private javax.swing.JTextField jTFpoder;
-    private javax.swing.JTextArea jTextArea;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTree jTree;
+    private javax.swing.JMenuItem jmListar;
+    private javax.swing.JMenuItem jmListar2;
+    private javax.swing.JMenuItem jmeliminar;
     private javax.swing.JPanel panelfondo;
     private javax.swing.JPopupMenu popup1;
+    private javax.swing.JPopupMenu popup2;
     // End of variables declaration//GEN-END:variables
     
     

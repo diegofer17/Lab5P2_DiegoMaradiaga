@@ -18,6 +18,30 @@ public class Personaje {
         this.HP = HP;
     }
 
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getDebilidad() {
+        return Debilidad;
+    }
+
+    public void setDebilidad(String Debilidad) {
+        this.Debilidad = Debilidad;
+    }
+
+    public String getUniverso() {
+        return Universo;
+    }
+
+    public void setUniverso(String Universo) {
+        this.Universo = Universo;
+    }
+
     public String getPoder() {
         return Poder;
     }
@@ -32,6 +56,14 @@ public class Personaje {
 
     public void setAgilidadF(int AgilidadF) {
         this.AgilidadF = AgilidadF;
+    }
+
+    public int getFuerza() {
+        return Fuerza;
+    }
+
+    public void setFuerza(int Fuerza) {
+        this.Fuerza = Fuerza;
     }
 
     public int getAgilidadM() {
@@ -50,16 +82,19 @@ public class Personaje {
         this.HP = HP;
     }
 
+    
+
     @Override
+    
     public String toString() {
-        return "Poder -> "+Poder+"\n"
-                + "Fuerza -> "+Fuerza+"\n"
-                + "Habilidad -> "+AgilidadF+"\n"
-                + "Mental -> "+AgilidadM+"\n"
-                + "Puntos de vida -> "+HP;
+        return Nombre;
     }
     
     public String toStringN() {
-        return Nombre;
+        return "Poder -> "+Poder+"\n"
+                + " Fuerza -> "+Fuerza+"\n"
+                + " Habilidad -> "+AgilidadF+"\n"
+                + " Mental -> "+AgilidadM+"\n"
+                + " Puntos de vida -> "+HP;
     }
 }
