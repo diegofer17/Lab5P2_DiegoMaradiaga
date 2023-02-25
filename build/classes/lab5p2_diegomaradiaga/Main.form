@@ -292,7 +292,7 @@
                     <StringItem index="0" value="DC"/>
                     <StringItem index="1" value="Marvel"/>
                     <StringItem index="2" value="CapCom"/>
-                    <StringItem index="3" value="Mortal Kombat"/>
+                    <StringItem index="3" value="MortalKombat"/>
                   </StringArray>
                 </Property>
               </Properties>

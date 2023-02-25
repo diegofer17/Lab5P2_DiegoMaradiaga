@@ -168,7 +168,7 @@ public class Main extends javax.swing.JFrame {
         jComboBoxU.setBackground(new java.awt.Color(255, 255, 255));
         jComboBoxU.setFont(new java.awt.Font("Sansburg", 0, 18)); // NOI18N
         jComboBoxU.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBoxU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "CapCom", "Mortal Kombat" }));
+        jComboBoxU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DC", "Marvel", "CapCom", "MortalKombat" }));
         panelfondo.add(jComboBoxU, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 250, 30));
 
         btn_menu.setBackground(new java.awt.Color(51, 51, 51));
@@ -576,7 +576,11 @@ public class Main extends javax.swing.JFrame {
             m.removeNodeFromParent(nodo_seleccionado);
             m.reload();
             jList.setModel(new DefaultListModel());
-            character.remove(nodo_seleccionado);
+            for (int i = 0; i < character.size(); i++) {
+            if (nodo_seleccionado.toString().equals(((Personaje)character.get(i)).getUniverso())) {
+                character.remove(i);
+            }
+        }
         }
     }//GEN-LAST:event_jmeliminarActionPerformed
 
