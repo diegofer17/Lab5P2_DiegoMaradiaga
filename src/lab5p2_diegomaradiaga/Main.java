@@ -577,7 +577,7 @@ public class Main extends javax.swing.JFrame {
             m.reload();
             jList.setModel(new DefaultListModel());
             for (int i = 0; i < character.size(); i++) {
-            if (nodo_seleccionado.toString().equals(((Personaje)character.get(i)).getUniverso())) {
+            if (nodo_seleccionado.toString().equals(((Personaje)character.get(i)).getNombre())) {
                 character.remove(i);
             }
         }
